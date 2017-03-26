@@ -186,11 +186,11 @@ section {
 #wrapper {
     width: 100%;
     min-height: calc(100% - 68px);
+    background: url('../images/background.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
     float: left;
     margin-top: 68px;
-    background: url('../images/background.jpg');
 }
 
 header {
