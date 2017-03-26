@@ -1,7 +1,7 @@
 from ebaysdk.finding import Connection
 from pprint import pprint
 import sys
-import numpy
+import numpy as np
 
 #sandbox
 #api = Connection(domain='svcs.sandbox.ebay.com', appid="DylanJon-BigMarke-SBX-8007cb151-1613a88c", config_file=None)
