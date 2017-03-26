@@ -1,5 +1,6 @@
 appdirs==1.4.3
 click==6.7
+ebaysdk==2.1.4
 Flask==0.12
 google-api-python-client==1.6.2
 httplib2==0.10.3
