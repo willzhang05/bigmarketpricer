@@ -15,6 +15,7 @@ api = Connection(appid="DylanJon-BigMarke-PRD-8240e526c-b1c796ea", config_file=N
 cache = []
 
 def get_price(keywords : str, category : str = 'Computer parts'):
+    keywords = keywords.lower()
     cached = get_data_from_bigparser(keywords)
     if cached is not None:
         return cached
@@ -57,15 +58,16 @@ def get_data_from_bigparser(keywords : str):
 def update_bigparser(keywords, data):
     curtime = round(time.time())
     arr = [keywords, data['price'], data['stdev'], str(curtime)]
-    i = open("out.csv", 'w')
+    i = open("out.csv", 'a')
     for x in arr:
         i.write((str(x) if type(x) != str else x) + ',')
+    i.write('\n')
     i.close()
     sync.main()
 
 
 if __name__ == '__main__':
     #print (f'Average market price for {sys.argv[1]} is {get_price(sys.argv[1])}')
-    pass
+    print('Average market price for {} is {}'.format((sys.argv[1]), (get_price(sys.argv[1]))))
 
 #pprint(items)

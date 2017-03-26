@@ -33,7 +33,7 @@ def main():
             url = "https://www.bigparser.com/connectors-api/api/apps/file/googleDrive/" + response['requestId'] + "/status"
             headers = {'authId':authId}
             response = requests.get(url, headers=headers).json()
-            print(response)
+#            print(response)
     except KeyError:
             print("Your Grid is already synced up to the most recent version of your Google Sheet")
 
