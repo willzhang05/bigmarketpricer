@@ -46,7 +46,8 @@ def new_sheet(choice):
 
 
 def main(ifile, ofile):
-
+#    ifile = 'out.csv'
+#    ofile = 'memes2.0'
     gc = pygsheets.authorize(
         outh_file="client_secret.json",
         outh_nonlocal=True)
@@ -57,7 +58,7 @@ def main(ifile, ofile):
     sheet_name = None
     if ofile is None:
         choice=False
-        #choice = yn_prompt("Do you want to create a new sheet? [y/n] ")
+        choice = yn_prompt("Do you want to create a new sheet? [y/n] ")
         sheet_name = new_sheet(choice)
 
     if sheet_name is not None:
@@ -83,9 +84,10 @@ def main(ifile, ofile):
 
     sh = gc.open(sheet_name)
     wks = sh.sheet1
+    if wks.rows - 1 > 1:
+        wks.delete_rows(1, wks.rows - 1) # clear
     to_insert = read_csv(ifile)
     for row in to_insert:
-
         rows = len(wks.get_col(1, returnas='cell', include_empty=False))
         wks.append_row(start=("A" + str(rows + 1)),
                        end=None, values=row)
