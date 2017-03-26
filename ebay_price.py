@@ -1,6 +1,7 @@
 from ebaysdk.finding import Connection
 from pprint import pprint
 import sys
+import numpy
 
 #sandbox
 #api = Connection(domain='svcs.sandbox.ebay.com', appid="DylanJon-BigMarke-SBX-8007cb151-1613a88c", config_file=None)
@@ -14,20 +15,24 @@ def get_price(keywords : str, category : str = 'Computer parts'):
                     {'name': 'SoldItemsOnly',
                      'value': 1},
                 ],
+                'sortOrder' : 'EndTimeSoonest',
                 }
     resp = api.execute('findCompletedItems', request).dict()
     items = resp['searchResult']['item']
 
-    s = 0
-    numItems = 0
+    arr = []
 
     for item in items:
         if '_currencyID' not in item['sellingStatus']['currentPrice'] or item['sellingStatus']['currentPrice']['_currencyID'] == 'USD':
-            s += float(item['sellingStatus']['currentPrice']['value'])
-            numItems += 1
-    return (s / numItems) * 0.9 # ebay has 10% premium fee
+            arr.append(float(item['sellingStatus']['currentPrice']['value']))
+
+    return {
+            'price' : (sum(arr) / len(arr)) * 0.9, # ebay has 10% premium fee
+            'stdev' : np.std,
+           }
 
 
 if __name__ == '__main__':
     print (f'Average market price for {sys.argv[1]} is {get_price(sys.argv[1])}')
+    
 #pprint(items)
