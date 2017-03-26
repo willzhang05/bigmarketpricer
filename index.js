@@ -1,10 +1,39 @@
-var express = require('express')
-var app = express()
+const craigslist = require("node-craigslist");
+const terms = process.argv[2];
+console.log(terms);
 
-app.get('/', function (req, res) {
-  res.send('Hello World!')
-})
+let client = new craigslist.Client({
+    baseHost : 'craigslist.com',
+    city : "WashingtonDC"
+});
 
-app.listen(8000, function () {
-  console.log('Example app listening on port 8000!')
-})
+var options = {
+    baseHost : '',
+    category : 'syp', //computer parts
+    city : 'washingtondc',
+    maxAsk : '',
+    minAsk : '',
+};
+
+function filterListings(listings) {
+    var out = [];
+
+    for (var i = 0; i < listings.length; i++) {
+        if(listings[i]["title"].toLowerCase().indexOf(terms.toLowerCase()) !== -1) {
+            out.push(listings[i]);
+        }
+    }
+    return out;
+}
+
+client
+  .search(options, terms)
+  .then((listings) => {
+    // filtered listings (by price) 
+    console.log(listings.length);
+    console.log(filterListings(listings));
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
