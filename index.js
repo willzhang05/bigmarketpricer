@@ -8,7 +8,7 @@ console.log(argv);
 var client = new craigslist.Client();
 
 var options = {
-    baseHost : ('baseHost' in argv ? argv['baseHost'] : ''),
+    baseHost : ('baseHost' in argv ? argv['baseHost'] : 'craigslist.org'), //default org
     category : ('category' in argv ? argv['category'] : 'syp'), //temporary syp
     city : ('city' in argv ? argv['city'] : 'washingtondc'), //default dc
     maxAsk : ('maxAsk' in argv ? argv['maxAsk'] : ''),
