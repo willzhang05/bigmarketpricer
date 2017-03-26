@@ -11,10 +11,10 @@
                 <form id="search" name="search" action={{ url_for('search') }} method="Post">
                     <div class="search-box-wrapper">
                         <div class="mdl-textfield mdl-js-textfield">
-                            <input name="terms" class="mdl-textfield__input" type="text" maxlength="140" id="terms">
+                            <input class="mdl-textfield__input" type="text" maxlength="140" id="terms" name="terms">
                             <label class="mdl-textfield__label" for="terms">Search</label>
                         </div>
-                        <button type="submit" form="search" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                        <button type="submit"  class="mdl-button mdl-js-button mdl-js-ripple-effect">
                             <i class="material-icons">search</i>
                         </button>
                     </div>
