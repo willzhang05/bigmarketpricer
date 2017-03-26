@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+{% include 'head.html' %}
+    </head>
+    <title>BigMarketPricer</title>
+    <body>
+{% include 'header.html' %}
+        <div id="wrapper">
+            <section id="search-wrapper">
+                <form name="search" action={{ url_for('search') }} method="Post">
+                    <div id="search-box-wrapper">
+                        <input type="text" name="query" />
+                        <input type="submit" name="submit" />
+                    </div>
+                </form>
+            </section>
+        </div>
+        <footer>
+        </footer>
+    </body>
+</html>
