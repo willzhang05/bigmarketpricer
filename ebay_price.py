@@ -2,6 +2,8 @@ from ebaysdk.finding import Connection
 from pprint import pprint
 import sys
 import numpy as np
+import time
+import threading
 
 #sandbox
 #api = Connection(domain='svcs.sandbox.ebay.com', appid="DylanJon-BigMarke-SBX-8007cb151-1613a88c", config_file=None)
@@ -25,11 +27,20 @@ def get_price(keywords : str, category : str = 'Computer parts'):
     for item in items:
         if '_currencyID' not in item['sellingStatus']['currentPrice'] or item['sellingStatus']['currentPrice']['_currencyID'] == 'USD':
             arr.append(float(item['sellingStatus']['currentPrice']['value']))
-
-    return {
+    data = {
             'price' : (sum(arr) / len(arr)) * 0.9, # ebay has 10% premium fee
             'stdev' : np.std,
            }
+    # bigparser writes are slow; do it in a thread
+    t = threading.Thread(target=update_bigparser)
+    t.start()
+
+    return data
+
+def update_bigparser(data):
+    curtime = time.time()
+
+
 
 
 if __name__ == '__main__':
