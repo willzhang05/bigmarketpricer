@@ -3,7 +3,7 @@ from pprint import pprint
 import sys
 
 #sandbox
-api = Connection(domain='svcs.sandbox.ebay.com', appid="DylanJon-BigMarke-SBX-8007cb151-1613a88c", config_file=None)
+#api = Connection(domain='svcs.sandbox.ebay.com', appid="DylanJon-BigMarke-SBX-8007cb151-1613a88c", config_file=None)
 #production
 api = Connection(appid="DylanJon-BigMarke-PRD-8240e526c-b1c796ea", config_file=None)
 
@@ -25,7 +25,7 @@ def get_price(keywords : str, category : str = 'Computer parts'):
         if '_currencyID' not in item['sellingStatus']['currentPrice'] or item['sellingStatus']['currentPrice']['_currencyID'] == 'USD':
             s += float(item['sellingStatus']['currentPrice']['value'])
             numItems += 1
-    return s / numItems
+    return (s / numItems) * 0.9 # ebay has 10% premium fee
 
 
 if __name__ == '__main__':
