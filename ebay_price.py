@@ -25,7 +25,7 @@ def get_price(keywords : str, category : str = 'Computer parts'):
         if '_currencyID' not in item['sellingStatus']['currentPrice'] or item['sellingStatus']['currentPrice']['_currencyID'] == 'USD':
             s += float(item['sellingStatus']['currentPrice']['value'])
             numItems += 1
-    return s / numItems
+    return (s / numItems) * 0.9 # ebay has 10% premium fee
 
 
 if __name__ == '__main__':
