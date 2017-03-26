@@ -49,63 +49,7 @@ def search():
     data = request.form
     info = ebay_price.get_price(data["terms"], data["category"]);
     print(info["price"])      
-    return info["price"]
-
-'''
-@app.route("/hours/")
-def hours():
-    if "oauth_token" in session:
-        profile_json = session.get("profile")
-
-        hours = Hour.query.filter_by(name=profile_json['full_name'])
-        return render_template("hours.html", hours=hours)
-
-    return redirect(url_for("login", next="hours"))
-
-
-@app.route("/admin/")
-def admin():
-    if "oauth_token" in session:
-        #profile_json = session.get("profile", {})
-        username = session.get("username", {})
-        admins = ["2018wzhang", "2018nzhou"]
-        if username in admins:
-            announcements = Announcement.query.all()
-            hours = Hour.query.all()
-            return render_template(
-                "admin.html",
-                announcements=announcements,
-                hours=hours)
-        return "Unauthorized"
-
-    return redirect(url_for("login", next="admin"))
-
-
-@app.route("/login/", methods=["get"])
-def login():
-    nexturl = request.args.get("next")
-    if not is_safe_url(nexturl):
-        return flask.abort(400)
-
-    oauth = OAuth2Session(
-        CLIENT_ID, redirect_uri=REDIRECT_URI, scope=["read"])
-    if "code" not in request.args:
-        authorization_url, state = oauth.authorization_url(AUTH_BASE_URL)
-        session["next"] = nexturl
-        return redirect(authorization_url)
-    try:
-        token = oauth.fetch_token(
-            TOKEN_URL, code=request.args.get(
-                "code", ""), client_secret=CLIENT_SECRET)
-        profile = oauth.get("https://ion.tjhsst.edu/api/profile")
-        profile_data = json.loads(profile.content.decode())
-        session["profile"] = profile_data
-        session["username"] = profile_data["ion_username"]
-        session["oauth_token"] = token
-        return redirect(url_for(session["next"]))
-    except InvalidGrantError:
-        return redirect(url_for("login"))
-'''
+    return render_template("results.html", info=info)
 
 @app.route("/css/<path:path>")
 def send_css(path):
