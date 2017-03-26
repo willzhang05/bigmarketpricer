@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 import os
+import subprocess
 import ebay_price
 from flask import Flask, redirect, session, url_for, render_template, request, send_from_directory
 from urllib.parse import urlparse, urljoin, urlencode
@@ -43,13 +44,14 @@ def index():
 
 @app.route("/search/", methods=["POST"])
 def search():
-    '''nexturl = request.args.get("next")
-    if not is_safe_url(nexturl):
-        return flask.abort(400)'''
     data = request.form
     if any(data) and data["terms"] != "":
-        info = ebay_price.get_price(data["terms"], data["category"]);
-        return render_template("results.html", info=info)
+        info = ebay_price.get_price(data["terms"], data["category"])
+        proc = subprocess.check_call(["node", "/var/www/bigmarketpricer/wrangler.js", data["terms"], data["category"], data["price"]], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+        listings = json.loads(proc.stdout)
+        print(listings)
+        #listings = json.load(open("./test.json"))
+        return render_template("results.html", info=info, listings=listings)
     else:
         return redirect(url_for("index"))
 
