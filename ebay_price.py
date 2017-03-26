@@ -14,7 +14,9 @@ import threading
 api = Connection(appid="DylanJon-BigMarke-PRD-8240e526c-b1c796ea", config_file=None)
 cache = []
 
-def get_price(keywords : str, category : str = 'Computer parts'):
+def get_price(keywords : str, category : str = 'syp'):
+    # syp - parts
+    # sya - computers
     cached = get_data_from_bigparser(keywords)
     if cached is not None:
         return cached
