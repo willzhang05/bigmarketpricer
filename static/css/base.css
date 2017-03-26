@@ -28,6 +28,7 @@ span {
     display: block;
 }
 
+
 hr {
     width: 100%;
     height: 1px;
@@ -89,6 +90,7 @@ button.left:hover, button.right:hover {
 button.left:active, button.right:active {
 }
 
+
 span.left-arrow {
     width: 48px;
     height: 48px;
@@ -101,28 +103,46 @@ span.right-arrow {
     background-image: url('../icons/ic_keyboard_arrow_right_white_48px.svg');
 }
 
-input[type="text"] {
-    width: calc(40vw - 2.5em);
-    height: 100%;
-    outline: none;
-    padding: 2px;
+#search-box-wrapper > i {
 }
 
-input[type="submit"] {
-    width: 2.5em;
-    height: 2.5em;
+input {
     outline: none;
-    content: "";
+}
+
+.search-box-wrapper > input[type="text"] {
+    float: left;
+    width: calc(100% - 48px);
+    height: 10vh;
+    outline: none;
     padding: 2px;
 }
 
 #search-box-wrapper {
-    position: relative;
+    float: left;
     left: 10vw;
     top: 30px;
-    width: 40vw;
+    width: 36vw;
+    height: 500px;
     font-size: 2em;
     border: 4px solid black;
+}
+
+.mdl-select {
+    font-size: 1em !important;
+    float: left;
+    padding: 20px;
+}
+
+#search-wrapper > .mdl-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: calc(50vw - 74px);
+}
+
+.mdl-textfield__label {
+    font-size: 1em !important;
+    float: left;
 }
 
 section {
@@ -133,10 +153,13 @@ section {
 #search-wrapper {
     background-color: #fff;
     position: relative;
-    left: 20vw;
+    left: 30vw;
     top: 25vh;
-    width: 60vw;
-    height: 50vh;
+    width: 40vw;
+    min-height: 20vh;
+    float: left;
+    display: block;
+    padding-left: 20px;
     -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .16), 0 2px 5px 0 rgba(0, 0, 0, .26);
     -moz-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .16), 0 2px 5px 0 rgba(0, 0, 0, .26);
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .16), 0 2px 5px 0 rgba(0, 0, 0, .26)
@@ -155,19 +178,23 @@ section {
 header {
     z-index: 2;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     height: 68px;
     float: left;
-    background-color: transparent;
+    background-color: #3F51B5;
 }
 
 #logo-wrapper {
-    width: 100vw;
-    height: 100%;
+    width: 100%;
+    height: 68px;
     text-align: center;
     font-size: 48px;
     font-weight: bold;
-
+    vertical-align: bottom;
+    padding-top: 20px;
+    float: left;
+    color: white;
+    display: inline-block;
     background-color: transparent;
 }
 
@@ -217,47 +244,6 @@ header {
     padding: 0 0 0 10px;
 }
 
-#welcome-text {
-    width: calc(50% - 20px);
-    float: left;
-    padding-right: 20px;
-    padding-bottom: 10px;
-}
-
-#welcome-text > h1, #photos-text > h1, #annoucements > h1 {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-#welcome-image {
-    width: calc(50% - 10px);
-    float: left;
-}
-
-#welcome-image > img {
-    width: 100%;
-    height: 100%;
-    float: left;
-}
-
-#slideshow > img {
-    max-width: 100%;
-    max-height: 100%;
-    left: 50%;
-    top: 50%;    
-    float: left;
-    transform: translate(-50%, -50%);
-    position: absolute;
-}
-
-#slideshow {
-    width: 100%;
-    height: 400px;
-    position: relative;
-    background-color: #616161;
-    overflow: hidden;
-    float: left;
-}
 .menu-button {
     color: #fff;
     font-size: 16px;
@@ -308,4 +294,3 @@ header {
     #content {
     }
 }
-

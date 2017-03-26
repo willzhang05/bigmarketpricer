@@ -1,18 +1,10 @@
 #!/usr/bin/python3
 import sys
 import os
+import ebay_price
 from flask import Flask, redirect, session, url_for, render_template, request, send_from_directory
 from urllib.parse import urlparse, urljoin, urlencode
 
-CLIENT_ID = "omNihUKDY7L8XXLh41WTTY9Pda21T2SRqAmJO86C"
-CLIENT_SECRET = "fmdfCpUwDIu0E5FExHudOdySDSa7HPhNrRKTirNsXJIWc2NEMFJtiY7UaczcTJL2kzRnsBV4OWPQ8P8KTv8YDqS5rdOOAE0opdYBLbZtMzNTfnCWHTJTgmpmDDtSbjDY"
-REDIRECT_URI = "https://dev.wzhang.me/login"
-
-AUTH_BASE_URL = "https://ion.tjhsst.edu/oauth/authorize/"
-TOKEN_URL = "https://ion.tjhsst.edu/oauth/token/"
-
-from requests_oauthlib import OAuth2Session
-from oauthlib.oauth2.rfc6749.errors import InvalidGrantError
 os.environ["FLASK_DEBUG"]="1"
 app = Flask(__name__)
 
@@ -54,6 +46,8 @@ def search():
     '''nexturl = request.args.get("next")
     if not is_safe_url(nexturl):
         return flask.abort(400)'''
+    data = request.get_json()
+    
     return render_template("index.html")
 
 '''

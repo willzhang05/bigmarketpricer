@@ -8,15 +8,39 @@
 {% include 'header.html' %}
         <div id="wrapper">
             <section id="search-wrapper">
-                <form name="search" action={{ url_for('search') }} method="Post">
-                    <div id="search-box-wrapper">
-                        <input type="text" name="query" />
-                        <input type="submit" name="submit" />
+                <form id="search" name="search" action={{ url_for('search') }} method="Post">
+                    <div class="search-box-wrapper">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input name="terms" class="mdl-textfield__input" type="text" maxlength="140" id="terms">
+                            <label class="mdl-textfield__label" for="terms">Search</label>
+                        </div>
+                        <button type="submit" form="search" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
+                    <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                        <select class="mdl-select__input" id="site" name="site">
+                            <option value="craigslist">Craigslist</option>
+                            <option value="ebay">Ebay</option>
+                        </select>
+                   </div>
+                    <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                        <select class="mdl-select__input" id="category" name="category">
+                            <option value="syp">Computer parts</option>
+                            <option value="sya">Computers</option>
+                        </select>
+                   </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="percent" name="percent">
+                        <label class="mdl-textfield__label" for="percent">% Below Market Value</label>
+                        <span class="mdl-textfield__error">Input is not a number!</span>
                     </div>
                 </form>
+                    <!--<div id="search-box-wrapper">
+                        <input type="text" name="query" />
+                        <input type="submit" name="submit" />
+                    </div>-->
             </section>
         </div>
-        <footer>
-        </footer>
     </body>
 </html>
