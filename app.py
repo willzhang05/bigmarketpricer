@@ -46,9 +46,10 @@ def search():
     '''nexturl = request.args.get("next")
     if not is_safe_url(nexturl):
         return flask.abort(400)'''
-    data = request.get_json()
-    
-    return render_template("index.html")
+    data = request.form
+    info = ebay_price.get_price(data["terms"], data["category"]);
+    print(info["price"])      
+    return info["price"]
 
 '''
 @app.route("/hours/")
