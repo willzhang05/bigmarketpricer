@@ -1,19 +1,19 @@
 const searchTerm = process.argv[2];
 const args = process.argv;
 const argv = require('minimist')(process.argv.slice(3));
-console.log('Searching for: ' + searchTerm);
+//console.log('Searching for: ' + searchTerm);
 
 const options = {
-    baseHost: ('baseHost' in argv ? argv['baseHost'] : 'craigslist.org'),  // default org
+    baseHost: 'craigslist.org',  // default org
     category: (args.length >= 5 ? args[4] : ''),
 	//    category: ('category' in argv ? argv['category'] : ''),                // temporary syp
-    city: ('city' in argv ? argv['city'] : 'washingtondc'),                // default dc
+    city: 'washingtondc',                // default dc
     maxAsk: (args.length >= 4 ? Math.ceil(args[3]).toString() : ''),
-    minAsk: ('minAsk' in argv ? Math.ceil(argv['maxAsk']).toString() : ''),
+   minAsk: '',
 };
 
-console.log('Options: ');
-console.log(options);
+//console.log('Options: ');
+//console.log(options);
 
 const craigslist = require('node-craigslist');
 const client = new craigslist.Client();

@@ -8,11 +8,31 @@
 {% include 'header.html' %}
         <div id="wrapper">
             <div id="content">
-                Average price: ${{ "{0:0.2f}".format(info["price"]) }}
-            </div><!--<div id="search-box-wrapper">
-                        <input type="text" name="query" />
-                        <input type="submit" name="submit" />
-                    </div>-->
+                <table>
+                <tr>
+                    <th>Average price: {{ ("${:.2f}".format(info["price"]|float)) }}</th>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Percentage</th>
+                    <th>URL</th>
+                </tr>
+                {% for item in listings %}
+                <tr>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ (1.0 * ("${:.2f}".format(item.price|float)|float) - ("${:.2f}".format(info["price"]|float)|float))/("${:.2f}".format(item.price|float)|float + 1) }}</td>
+                    <td>
+                        <a href="{{ item.url }}">Link</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                
+                </table>
+            </div>
         </div>
     </body>
 </html>
