@@ -45,13 +45,16 @@ def index():
 @app.route("/search/", methods=["POST"])
 def search():
     data = request.form
-    if any(data) and data["terms"] != "":
+    if any(data) and "terms" in data and "category" in data:
         info = ebay_price.get_price(data["terms"], data["category"])
-        proc = subprocess.check_call(["node", "/var/www/bigmarketpricer/wrangler.js", data["terms"], data["category"], data["price"]], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-        listings = json.loads(proc.stdout)
-        print(listings)
+        price = info["price"]
+        try:
+            out = subprocess.check_output("node wrangler.js {} {} {}".format("'" + data["terms"] + "'", price, data["category"]), shell=True)
+            return render_template("results.html", info=info, listings=json.loads(out))
+        except Exception as e:
+            print(e)
         #listings = json.load(open("./test.json"))
-        return render_template("results.html", info=info, listings=listings)
+
     else:
         return redirect(url_for("index"))
 

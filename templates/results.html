@@ -24,7 +24,7 @@
                     <td>{{ item.date }}</td>
                     <td>{{ item.title }}</td>
                     <td>{{ item.price }}</td>
-                    <td>{{ (("${:.2f}".format(item.price|float)|float) - ("${:.2f}".format(info["price"]|float)|float))/("${:.2f}".format(item.price|float)|float + 1) }}</td>
+                    <td>{{ (1.0 * ("${:.2f}".format(item.price|float)|float) - ("${:.2f}".format(info["price"]|float)|float))/("${:.2f}".format(item.price|float)|float + 1) }}</td>
                     <td>
                         <a href="{{ item.url }}">Link</a>
                     </td>

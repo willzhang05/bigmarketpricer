@@ -1,7 +1,7 @@
 const searchTerm = process.argv[2];
 const args = process.argv;
 const argv = require('minimist')(process.argv.slice(3));
-console.log('Searching for: ' + searchTerm);
+//console.log('Searching for: ' + searchTerm);
 
 const options = {
     baseHost: 'craigslist.org',  // default org
@@ -12,8 +12,8 @@ const options = {
    minAsk: '',
 };
 
-console.log('Options: ');
-console.log(options);
+//console.log('Options: ');
+//console.log(options);
 
 const craigslist = require('node-craigslist');
 const client = new craigslist.Client();
