@@ -1,10 +1,39 @@
-var express = require('express')
-var app = express()
+const craigslist = require("node-craigslist");
 
-app.get('/', function (req, res) {
-  res.send('Hello World!')
-})
+const searchTerm = process.argv[2];
+const argv = require('minimist')(process.argv.slice(3))
+console.log(searchTerm);
+console.log(argv);
 
-app.listen(8000, function () {
-  console.log('Example app listening on port 8000!')
-})
+var client = new craigslist.Client();
+
+var options = {
+    baseHost : ('baseHost' in argv ? argv['baseHost'] : 'craigslist.org'), //default org
+    category : ('category' in argv ? argv['category'] : 'syp'), //temporary syp
+    city : ('city' in argv ? argv['city'] : 'washingtondc'), //default dc
+    maxAsk : ('maxAsk' in argv ? argv['maxAsk'] : ''),
+    minAsk : ('minAsk' in argv ? argv['minAsk'] : ''),
+};
+
+console.log(options);
+
+function filterListings(listings) {
+    var out = [];
+
+    for (var i = 0; i < listings.length; i++) {
+        if(listings[i]["title"].toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
+            out.push(listings[i]);
+        }
+    }
+    return out;
+}
+
+client.search(options, searchTerm)
+  .then((listings) => {
+    // filtered listings (by price) 
+    console.log(listings.length);
+    console.log(filterListings(listings));
+  }).catch((err) => {
+    console.error(err);
+  });
+
