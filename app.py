@@ -47,9 +47,12 @@ def search():
     if not is_safe_url(nexturl):
         return flask.abort(400)'''
     data = request.form
-    info = ebay_price.get_price(data["terms"], data["category"]);
-    print(info["price"])      
-    return render_template("results.html", info=info)
+    if len(data.keys()) > 0:
+        return render_template("results.html", info=info)
+    else:
+        info = ebay_price.get_price(data["terms"], data["category"]);
+        print(info["price"])      
+        return redirect(url_for("index"))
 
 @app.route("/css/<path:path>")
 def send_css(path):

@@ -44,6 +44,7 @@ def update_bigparser(data):
 
 
 if __name__ == '__main__':
-    print (f'Average market price for {sys.argv[1]} is {get_price(sys.argv[1])}')
+    pass
+    #print (f'Average market price for {sys.argv[1]} is {get_price(sys.argv[1])}')
     
 #pprint(items)

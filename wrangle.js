@@ -25,7 +25,8 @@ function compileListings(listings) {
     return Promise.all(promises).then((detailed) => {
         var compiled = [];
         for (var i = 0; i < listings.length; i++)
-            compiled.push(Object.assign(listings[i], detailed[i])) return compiled;
+            compiled.push(Object.assign(listings[i], detailed[i]));
+	    return compiled;
     });
 }
 
