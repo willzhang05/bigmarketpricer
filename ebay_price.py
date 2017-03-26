@@ -3,7 +3,7 @@ from pprint import pprint
 import sys
 
 #sandbox
-api = Connection(domain='svcs.sandbox.ebay.com', appid="DylanJon-BigMarke-SBX-8007cb151-1613a88c", config_file=None)
+#api = Connection(domain='svcs.sandbox.ebay.com', appid="DylanJon-BigMarke-SBX-8007cb151-1613a88c", config_file=None)
 #production
 api = Connection(appid="DylanJon-BigMarke-PRD-8240e526c-b1c796ea", config_file=None)
 
