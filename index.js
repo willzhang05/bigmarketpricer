@@ -1,11 +1,10 @@
-const craigslist = require("node-craigslist");
-const terms = process.argv[2];
+const searchTerms = process.argv;
+const terms = searchTerms[2];
 console.log(terms);
 
-let client = new craigslist.Client({
-    baseHost : 'craigslist.com',
-    city : "WashingtonDC"
-});
+const craigslist = require("node-craigslist");
+
+var client = new craigslist.Client();
 
 var options = {
     baseHost : '',
