@@ -1,4 +1,5 @@
 node_modules/
 bigmarketpricer/
+__pycache__/
 *.swp
 oauth_secret.json
