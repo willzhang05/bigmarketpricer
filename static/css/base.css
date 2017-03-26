@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Vollkorn');
+
+@font-face {
+    font-family: Roboto;
+    src: url('../fonts/roboto/Roboto-Regular.ttf')
+ }
+
+* {
+    font-family: "Source Sans Pro", Roboto, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    border: 0;
+    -webkit-transition: all 0.2s ease;
+  	-moz-transition: all 0.2s ease;
+  	-ms-transition: all 0.2s ease;
+  	-o-transition: all 0.2s ease;
+   	transition: all 0.2s ease;
+}
+
+html, body {
+    height: 100%;
+    line-height: 1.5;
+}
+
+span {
+    display: block;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    float: left;
+    border: none;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+
+}
+
+h1 {
+    font-family: "Source Sans Pro", Roboto, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 2em;
+}
+
+h2 {
+    font-family: "Source Sans Pro", Roboto, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1.2em;
+}
+
+p {
+    font-family: "Vollkorn", Serif;
+    font-size: 1em;
+}
+
+dialog {
+    width: 200px;
+    left: calc(50vw - 100px);
+}
+button {
+    font-family: "Source Sans Pro", Roboto, "Helvetica Neue", Helvetica, sans-serif;
+    outline: none;
+    cursor: pointer;
+}
+
+button.left, button.right {
+    position: absolute;
+    z-index: 2;
+    width: 48px;
+    height: 100%;
+    float: left;
+    background-color: transparent;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    top: 0;
+}
+
+button.left {
+    left: 0;
+}
+
+button.right {
+    right: 0;
+}
+
+button.left:hover, button.right:hover {
+    background-color: #424242;
+}
+
+button.left:active, button.right:active {
+}
+
+span.left-arrow {
+    width: 48px;
+    height: 48px;
+    background-image: url('../icons/ic_keyboard_arrow_left_white_48px.svg');
+}
+
+span.right-arrow {
+    width: 48px;
+    height: 48px;
+    background-image: url('../icons/ic_keyboard_arrow_right_white_48px.svg');
+}
+
+input[type="text"] {
+    width: calc(40vw - 2.5em);
+    height: 100%;
+    outline: none;
+    padding: 2px;
+}
+
+input[type="submit"] {
+    width: 2.5em;
+    height: 2.5em;
+    outline: none;
+    content: "";
+    padding: 2px;
+}
+
+#search-box-wrapper {
+    position: relative;
+    left: 10vw;
+    top: 30px;
+    width: 40vw;
+    font-size: 2em;
+    border: 4px solid black;
+}
+
+section {
+    position: relative;
+    display: inline-block;
+}
+
+#search-wrapper {
+    background-color: #fff;
+    position: relative;
+    left: 20vw;
+    top: 25vh;
+    width: 60vw;
+    height: 50vh;
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .16), 0 2px 5px 0 rgba(0, 0, 0, .26);
+    -moz-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .16), 0 2px 5px 0 rgba(0, 0, 0, .26);
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .16), 0 2px 5px 0 rgba(0, 0, 0, .26)
+}
+
+#wrapper {
+    width: 100%;
+    min-height: calc(100% - 68px);
+    background: url('../images/background.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    float: left;
+    margin-top: 68px;
+}
+
+header {
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    height: 68px;
+    float: left;
+    background-color: transparent;
+}
+
+#logo-wrapper {
+    width: 100vw;
+    height: 100%;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+
+    background-color: transparent;
+}
+
+#content {
+    z-index: 0;
+    position: relative;
+    width: 100%;
+    left: 0;
+    float: left;
+    background-color: #fff;
+}
+
+@media (min-width: 900px) {
+    #content {
+        width: 800px;
+        left: calc((100vw - 800px) / 2);
+    }
+}
+
+.content-section {
+    width: 100%;
+    float: left;
+}
+
+#welcome, #photos, #announcements {
+    margin: 30px;
+    width: calc(100% - 60px);
+    float: left;
+}
+
+.announcement-title {
+    min-height: 1.2em;
+    display: inline-block;
+    clear: both;
+}
+
+.announcement-title > h2 {
+    float: left;
+}
+
+.announcement-info {
+    height: 100%;
+    font-family: "Source Sans Pro", Roboto, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1.2em;
+    color: #757575;
+    float: left;
+    padding: 0 0 0 10px;
+}
+
+#welcome-text {
+    width: calc(50% - 20px);
+    float: left;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+#welcome-text > h1, #photos-text > h1, #annoucements > h1 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#welcome-image {
+    width: calc(50% - 10px);
+    float: left;
+}
+
+#welcome-image > img {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+#slideshow > img {
+    max-width: 100%;
+    max-height: 100%;
+    left: 50%;
+    top: 50%;    
+    float: left;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+#slideshow {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    background-color: #616161;
+    overflow: hidden;
+    float: left;
+}
+.menu-button {
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+    height: 100px;
+    float: left;
+    padding: 0;
+	text-align: center;
+    background-color: transparent;
+}
+
+.menu-button:hover {
+    background-color: #bf0913; 
+}
+
+.menu-button:active {
+    background-color: #a40810; 
+}
+
+#nav-button {
+    width: 68px;
+    height: 68px;
+    float: left;
+    outline: none;
+    background-color: transparent;
+}
+
+.ic-menu {
+    background-image: url("../icons/ic_menu_black_48px.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: inline-block;
+}
+
+
+@media (max-width: 768px) {
+    #welcome-text, #welcome-image {
+        width: 100%;
+        padding-right: 0px;
+        clear: both;
+    }
+    #slideshow {
+        height: 300px;    
+    }
+    #content {
+    }
+}
+
