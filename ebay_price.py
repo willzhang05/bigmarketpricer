@@ -59,7 +59,7 @@ def update_bigparser(keywords, data):
     curtime = round(time.time())
     arr = [keywords, data['price'], data['stdev'], str(curtime)]
     i = open("out.csv", 'a')
-    i.write('Search Term, Average Price, Standard Deviation, Timestamp')
+    i.write('Search Term, Average Price, Standard Deviation, Timestamp\n')
     for x in arr:
         i.write((str(x) if type(x) != str else x) + ',')
     i.write('\n')
